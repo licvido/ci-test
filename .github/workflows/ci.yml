@@ -3,17 +3,38 @@ name: Workflow name
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-    job-name:
-        name: Job name
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v3
+    lint:
+      name: Lint
+      runs-on: ubuntu-latest
+      steps:
+        - name: Lint
+          run: echo "Linting ..."
 
-          - name: Setup PHP
-            id: setup-php
-            uses: shivammathur/setup-php@v2
-            with:
-              php-version: '8.2'
+    build:
+      name: Build
+      runs-on: ubuntu-latest
+      steps:
+        - name: Build
+          run: echo "Building ..."
+    
+    test:
+      name: Test
+      runs-on: ubuntu-latest
+      steps:
+        - name: Test
+          run: echo "Testing ..."
+    
+    deploy:
+      name: Deploy
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
 
-          - name: Print PHP version
-            run: echo ${{ steps.setup-php.outputs.php-version }}
+        - name: Setup PHP
+          id: setup-php
+          uses: shivammathur/setup-php@v2
+          with:
+            php-version: '8.2'
+
+        - name: Print PHP version
+          run: echo ${{ steps.setup-php.outputs.php-version }}
