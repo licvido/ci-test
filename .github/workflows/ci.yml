@@ -38,3 +38,10 @@ jobs:
 
         - name: Print PHP version
           run: echo ${{ steps.setup-php.outputs.php-version }}
+
+        - name: Run PHP code
+          shell: php {0}
+          run: |
+            <?php
+            $welcome = "Hello, world";
+            echo $welcome;
