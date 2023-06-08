@@ -47,3 +47,4 @@ jobs:
           <?php
           $welcome = "Hello, world";
           echo $welcome;
+          throw new Exception("Failed");
