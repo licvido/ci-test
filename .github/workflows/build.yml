@@ -26,10 +26,11 @@ jobs:
         run: echo "Building ..."
 
   security-check:
-    name: The PHP Security Checker
+    name: PHP Security Checker
     runs-on: ubuntu-latest
     steps:
-      - name: The PHP Security Checker
+      - uses: actions/checkout@v2
+      - name: PHP Security Checker
         uses: symfonycorp/security-checker-action@v5
 
   deploy:
