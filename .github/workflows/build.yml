@@ -20,14 +20,14 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    needs: [lint, test]
+    needs: [lint, test, security-check]
     steps:
       - name: Build
         run: echo "Building ..."
 
   security-check:
     name: The PHP Security Checker
-    runs-on: ubuntu-lates
+    runs-on: ubuntu-latest
     steps:
       - name: The PHP Security Checker
         uses: symfonycorp/security-checker-action@v4
