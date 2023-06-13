@@ -1,4 +1,4 @@
-name: CI
+name: build
 
 on: [push, pull_request, workflow_dispatch]
 
@@ -24,6 +24,13 @@ jobs:
     steps:
       - name: Build
         run: echo "Building ..."
+
+  security-check:
+    name: The PHP Security Checker
+    runs-on: ubuntu-lates
+    steps:
+      - name: The PHP Security Checker
+        uses: symfonycorp/security-checker-action@v4
 
   deploy:
     name: Deploy
